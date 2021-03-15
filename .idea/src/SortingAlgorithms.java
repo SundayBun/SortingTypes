@@ -69,7 +69,7 @@ class VariableSorting {
     private void merge(int[] array, int left, int mid, int right) {
         int leftLength = mid - left + 1;
         int rightLength = right - mid;
-// здесь array делится на 2 подмассива -left и right
+        // здесь array делится на 2 подмассива -left и right
         int[] leftArray = new int[leftLength];
         int[] rightArray = new int[rightLength];
         //цикл присваевает значения элементов левой и правой части
@@ -111,8 +111,6 @@ class VariableSorting {
         quickSort(array, begin, pivot - 1);
         quickSort(array, pivot + 1, end);
         return array;
-
-
     }
 
     public int partition(int[] array, int begin, int end) {
@@ -159,61 +157,63 @@ public class SortingAlgorithms {
         test1();
         test2();
     }
-        public static void test1(){
-            VariableSorting sorting=new VariableSorting();
-            int testLength=10000;
-            int [] arr1=new int[testLength];
-            int [] arr2=new int[testLength];
-            int [] arr3=new int[testLength];
-            int [] arr4=new int[testLength];
-            System.out.println("\n------Случайный массив------");
 
-            for (int i=0;i<testLength;i++){
-                arr1[i]=arr2[i]=arr3[i]=arr4[i]=(int)Math.round(Math.random()*1000);
-            }
-            System.out.println("Быстрая сортировка");
-            measureTime(()->sorting.quickSort(arr1,0,arr1.length-1));
+    public static void test1() {
+        VariableSorting sorting = new VariableSorting();
+        int testLength = 10000;
+        int[] arr1 = new int[testLength];
+        int[] arr2 = new int[testLength];
+        int[] arr3 = new int[testLength];
+        int[] arr4 = new int[testLength];
+        System.out.println("\n------Случайный массив------");
 
-            System.out.println("Cортировка слиянием");
-            measureTime(()->sorting.mergeSort(arr2,0,arr2.length-1));
-
-            System.out.println("Cортировка пузырьком");
-            measureTime(()->sorting.bubbleSort(arr3));
-
-            System.out.println("Cортировка выбором");
-            measureTime(()->sorting.insertionSort(arr4));
-
-    }
-    public static void test2(){
-        VariableSorting sorting=new VariableSorting();
-        int testLength=10000;
-        int [] arr1=new int[testLength];
-        int [] arr2=new int[testLength];
-        int [] arr3=new int[testLength];
-        int [] arr4=new int[testLength];
-        System.out.println("\n------Отсортированный массив------");
-
-        for (int i=0;i<testLength;i++){
-            arr1[i]=arr2[i]=arr3[i]=arr4[i]=i;
+        for (int i = 0; i < testLength; i++) {
+            arr1[i] = arr2[i] = arr3[i] = arr4[i] = (int) Math.round(Math.random() * 1000);
         }
         System.out.println("Быстрая сортировка");
-        measureTime(()->sorting.quickSort(arr1,0,arr1.length-1));
+        measureTime(() -> sorting.quickSort(arr1, 0, arr1.length - 1));
 
         System.out.println("Cортировка слиянием");
-        measureTime(()->sorting.mergeSort(arr2,0,arr2.length-1));
+        measureTime(() -> sorting.mergeSort(arr2, 0, arr2.length - 1));
 
         System.out.println("Cортировка пузырьком");
-        measureTime(()->sorting.bubbleSort(arr3));
+        measureTime(() -> sorting.bubbleSort(arr3));
 
         System.out.println("Cортировка выбором");
-        measureTime(()->sorting.insertionSort(arr4));
+        measureTime(() -> sorting.insertionSort(arr4));
 
     }
 
-    public static void measureTime(Runnable task){
-        long startTime=System.currentTimeMillis();
+    public static void test2() {
+        VariableSorting sorting = new VariableSorting();
+        int testLength = 10000;
+        int[] arr1 = new int[testLength];
+        int[] arr2 = new int[testLength];
+        int[] arr3 = new int[testLength];
+        int[] arr4 = new int[testLength];
+        System.out.println("\n------Отсортированный массив------");
+
+        for (int i = 0; i < testLength; i++) {
+            arr1[i] = arr2[i] = arr3[i] = arr4[i] = i;
+        }
+        System.out.println("Быстрая сортировка");
+        measureTime(() -> sorting.quickSort(arr1, 0, arr1.length - 1));
+
+        System.out.println("Cортировка слиянием");
+        measureTime(() -> sorting.mergeSort(arr2, 0, arr2.length - 1));
+
+        System.out.println("Cортировка пузырьком");
+        measureTime(() -> sorting.bubbleSort(arr3));
+
+        System.out.println("Cортировка выбором");
+        measureTime(() -> sorting.insertionSort(arr4));
+
+    }
+
+    public static void measureTime(Runnable task) {
+        long startTime = System.currentTimeMillis();
         task.run();
-        long elapsed=System.currentTimeMillis()-startTime;
-        System.out.println("Затраченное время: " + elapsed+" ms");
+        long elapsed = System.currentTimeMillis() - startTime;
+        System.out.println("Затраченное время: " + elapsed + " ms");
     }
 }
